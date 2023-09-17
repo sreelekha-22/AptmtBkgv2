@@ -1,0 +1,37 @@
+{
+  "name": "apmt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app1.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^20.6.2",
+    "@types/npm": "^7.19.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "https": "^1.0.0",
+    "mailgen": "^2.0.27",
+    "mongoose": "^6.8.3",
+    "mongoose-encryption": "^2.1.2",
+    "nodemailer": "^6.9.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2",
+    "request": "^2.88.2"
+  }
+}

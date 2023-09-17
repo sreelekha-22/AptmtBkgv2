@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<title>Appointment Form</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<style>
+
+.form-control {
+	height: 40px;
+	box-shadow: none;
+	color: #969fa4;
+}
+.form-control:focus {
+	border-color: #5cb85c;
+}
+.form-control, .btn {
+	border-radius: 3px;
+}
+.signup-form {
+	width: 450px;
+	margin: 0 auto;
+	padding: 30px 0;
+  	font-size: 15px;
+}
+.signup-form h2 {
+	color: #636363;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+/*	background: #d4d4d4;--> */
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}
+.signup-form h2:before {
+	left: 0;
+}
+.signup-form h2:after {
+	right: 0;
+}
+.signup-form .hint-text {
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.signup-form form {
+	color: #999;
+	border-radius: 3px;
+/*	margin-bottom: 15px; */
+	background: #f2f3f7;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .btn {
+	font-size: 16px;
+	font-weight: bold;
+	min-width: 140px;
+	outline: none !important;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}
+.signup-form a {
+	color: #fff;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #5cb85c;
+	text-decoration: none;
+}
+.signup-form form a:hover {
+	text-decoration: underline;
+}
+.ftimings{
+	color: red;
+}
+nav{
+  opacity: 1;
+}
+.hd{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: inherit;
+}
+</style>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-brand hd" href="/shome">Home <span class="sr-only"></span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-brand hd" href="/dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-brand hd" href="/apmt">Book Appiontment <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-brand hd" href="/mybook">My Bookings</a>
+    </li>
+	<li class="nav-item active">
+		<a class="nav-brand hd" href="/facavab">Faculty availability</a>
+	  </li>
+</div>
+<div class="">
+  <form class="" action="/logout" method="POST">
+    <button type="submit" name="logoutbutton" style="color:white;border-radius: 0.3rem;margin-right:1rem;background-color:#4E68BF;border:aliceblue;">Logout</button>
+  </form>
+
+</div>
+</nav>
+
+<div class="signup-form">
+        <form action="/book" method="POST">
+	    	<h2>Book Appointment</h2>
+		<p class="hint-text">Please fill the form to book an appointment .</p>
+        <div class="form-group">
+          <label for="name">Student name  </label>
+				<input type="text" id="name" class="form-control" name="name" placeholder="Name" required="required">
+        </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" name="email" required="required">
+  </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select faculty</label>
+				<select class="form-control" name="faculty" id="exampleFormControlSelect1" required="required">
+
+					 <% faculties.forEach( function(faculty){  %>
+						<option>  <%= faculty.uname_ %>	</option>
+			 <% }) %>
+			 </select>
+        </div>
+        <div class="form-group">
+			<a href="/facavab" style="color: red;">check your faculty availability</a>
+		</div>
+
+        <div class="form-group"> <!-- Date input -->
+          <label class="control-label" for="date">Date</label>
+          <input class="form-control" id="datepick" name="date" placeholder="MM/DD/YYY" type="datetime-local" required="required">
+		  <script>
+			var today = new Date().toISOString().slice(0, 16);
+			document.getElementsByName("date")[0].min = today;
+			</script>
+		
+		</div>
+		 <div class="form-group">
+			 <label for="exampleFormControlTextarea1">Purpose of appointment</label>
+			 <textarea class="form-control" maxlength="140" name="purpose" id="exampleFormControlTextarea1" rows="3" required="required"></textarea>
+		 </div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
